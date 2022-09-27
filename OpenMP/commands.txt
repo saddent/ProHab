@@ -1,0 +1,11 @@
+
+# generate executable
+clang++ -fopenmp -o PrivateUsage PrivateUsage.cpp
+
+# generate intermediate temporary files
+clang++ -O0 -g0 -save-temps -fopenmp PrivateUsage.cpp
+llvm-dis PrivateUsage.bc -o PrivateUsage.ll
+
+# help commands for all the applications
+clang --help
+clang --help-hidden
