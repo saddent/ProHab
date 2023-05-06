@@ -1,0 +1,27 @@
+* nvcc compilation options
+  1. -code : 
+     a. specifies which *actual sm(streaming multiprocessor)*
+     *architecture* the SASS code should be generated against and be
+     included in the binary.
+     + The valid format is -code=sm_XY.
+
+     b. specifies which PTX code should be included in the binary
+     for the forward compatibility.
+     + The valid format is -code=compute_XY.
+
+  2. -arch : specifies which *virtual compute architecture* the PTX code
+    should be generated against. 
+     + The valid format is, -arch=compute_XY.
+
+  3. -gencode : combines both 1 and 2.
+     + The valid format is -gencode=arch=compute_XY, code=sm_XY 
+    
+  4. option compatibility
+     + -arch=compute_Xa is compatible with -code=sm_Xb when a <= b.
+     + -arch=compute_X* is incompatible with -code=sm_Y* .
+
+       [[https://kaixih.github.io/assets/posts_images/nvcc_opts.png][Image showing how the .cu file is converted]]
+
+* References
+  + https://kaixih.github.io/nvcc-options/
+  + 
